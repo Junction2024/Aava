@@ -1,3 +1,4 @@
+'use client'
 import React from 'react';
 import Link from 'next/link';
 
@@ -37,7 +38,7 @@ const HomePage = () => {
           <p className="text-gray-600">
             Showcase your commitment to well-being and attract talent that shares your values. Help your team members find their purpose and flourish.
           </p>
-          <Link href="/companies" className="mt-4 inline-block px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700">
+          <Link href="/CompanySignup" className="mt-4 inline-block px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700">
             Learn More
           </Link>
         </div>
