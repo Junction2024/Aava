@@ -33,18 +33,9 @@ const HomePage = () => {
           Discover workplaces that don't just offer a job—they help you thrive. 
           Connect with companies that prioritize well-being, mental health, and a shared sense of purpose.
           </p>
-        <p className="text-lg text-gray-700">
-          Discover workplaces that don't just offer a job—they help you thrive.
-          Connect with companies that prioritize well-being, mental health, and a
-          shared sense of purpose.
-        </p>
       </header>
 
       <section className="mt-8 text-center">
-        <h2 className="text-2xl font-semibold mb-2 text-black">Our Mission</h2>
-        <p className="text-gray-600 max-w-2xl mx-auto">
-          Imagine a workplace where well-being is at the heart of everything. At ThriveConnect, we match talent with companies that foster a culture of care, balance, and growth. We believe that your work shouldn’t drain you—it should help you recharge.
-          </p>
         <h2 className="text-2xl font-semibold mb-2">Our Mission</h2>
         <p className="text-gray-700 max-w-2xl mx-auto">
           Imagine a workplace where well-being is at the heart of everything. At ThriveConnect, we match
@@ -62,13 +53,8 @@ const HomePage = () => {
           <Link href="/WorkerSignUp" className="mt-4 inline-block px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
             Sign Up
             </Link>
-          <Link
-            href="/signup"
-            className="mt-4 inline-block px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
-          >
-            Get Started
 
-          </Link>
+
         </div>
 
         <div className="p-6 bg-green-50 rounded-lg shadow-md text-center">
@@ -76,9 +62,7 @@ const HomePage = () => {
           <p className="text-gray-600">
             Showcase your commitment to well-being and attract talent that shares your values. Help your team members find their purpose and flourish.
           </p>
-          <Link href="/companies" className="mt-4 inline-block px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700">
-            Sign up
-            </Link>
+
 
           <Link
             href="/companySignup"
