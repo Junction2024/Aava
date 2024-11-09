@@ -38,14 +38,14 @@ const HomePage = () => {
         <p className="text-lg text-gray-600">
           Imagine a workplace where well-being is at the heart of everything. At ThriveConnect, we match
           talent with companies that foster a culture of care, balance, and growth. We believe that your
-          work shouldn't drain you—it should help you recharge.
+          work shouldnt drain you—it should help you recharge.
         </p>
       </header>
 
       <section className="mt-8 text-center">
         <h2 className="text-2xl font-semibold mb-2 text-black">Our Mission</h2>
         <p className="text-gray-600 max-w-2xl mx-auto">
-          Imagine a workplace where well-being is at the heart of everything. At ThriveConnect, we match talent with companies that foster a culture of care, balance, and growth. We believe that your work shouldn't drain you—it should help you recharge.
+          Imagine a workplace where well-being is at the heart of everything. At ThriveConnect, we match talent with companies that foster a culture of care, balance, and growth. We believe that your work shouldnt drain you—it should help you recharge.
         </p>
       </section>
 
