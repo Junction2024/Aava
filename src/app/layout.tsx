@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { AuthProvider } from "../context/AuthContext";
-
+import Navbar from "./components/Navbar";
 // src/app/layout.tsx or _app.js
 // src/app/layout.tsx
 
