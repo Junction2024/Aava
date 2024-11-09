@@ -26,6 +26,7 @@ const MatchesPage = ({ likedCompanies = [] }) => {
       <div className="pt-20 p-6"> {/* Add top padding to account for fixed navbar */}
         <h1 className="text-3xl font-bold text-center mb-6 text-white">Your Matches</h1>
         <div className="max-w-lg mx-auto">
+
           {likedCompanies.length > 0 ? (
             likedCompanies.map((company) => (
               <div key={company.id} className="bg-gray-800 p-6 rounded-lg shadow-md mb-4">
@@ -38,6 +39,7 @@ const MatchesPage = ({ likedCompanies = [] }) => {
                   Apply
                 </button>
               </div>
+              
             ))
           ) : (
             <p className="text-center text-gray-400">No matches yet. Start swiping to find companies!</p>

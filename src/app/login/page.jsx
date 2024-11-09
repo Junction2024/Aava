@@ -52,7 +52,7 @@ const LoginPage = () => {
             />
           </div>
           <div>
-            <label className="block text-black-700">Password</label>
+            <label className="block text-white-700">Password</label>
             <input
               type="password"
               value={password}
@@ -63,7 +63,7 @@ const LoginPage = () => {
           </div>
           <button
             type="submit"
-            className="w-full py-2 px-4 bg-blue-600 text-black rounded-lg hover:bg-blue-700 transition-colors"
+            className="w-full py-2 px-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
           >
             Login
           </button>
