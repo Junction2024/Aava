@@ -6,6 +6,8 @@ const CompanySignUpForm = () => {
     Yrityksenimi: '',
     Avoimetpaikat: [''],
     kuvaus: '',
+    sahkoposti: '',
+    salasana: '',
     kuva: '',
     arvostelut:[''],
     arvoja: '',
@@ -33,46 +35,82 @@ const CompanySignUpForm = () => {
   };
  
   return (
-    <form onSubmit={handleSubmit} className="signup-form">
-      <label>
+    <form onSubmit={handleSubmit} className="signup-form max-w-md mx-auto p-6 bg-white rounded-lg shadow-lg">
+    <div className="form-group mb-4">
+      <label className="block text-gray-700 font-bold mb-2">
         Yrityksenimi:
-        <input type="text" name="Yrityksenimi" value={formData.Yrityksenimi} onChange={handleChange} required />
+        <input type="text" name="Yrityksenimi" value={formData.Yrityksenimi} onChange={handleChange} required 
+        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        />
       </label>
- 
-      <label>
-        Avoimet työpaikkat:
-        <input type="text" name="Avoimetpaikat" value={formData.Avoimetpaikat} onChange={handleChange} />
+    </div>
+
+    <div className="form-group mb-4">
+        <label className="block text-gray-700 font-bold mb-2">Sähköposti:</label>
+        <input
+          type="email"
+          name="sahkoposti"
+          value={formData.sahkoposti}
+          onChange={handleChange}
+          required
+          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        />
+      </div>
+
+      <div className="form-group mb-4">
+        <label className="block text-gray-700 font-bold mb-2">Salasana:</label>
+        <input
+          type="password"
+          name="salasana"
+          value={formData.salasana}
+          onChange={handleChange}
+          required
+          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        />
+      </div>
+
+    <div className="form-group mb-4">
+      <label className="block text-gray-700 font-bold mb-2">
+        Avoimet työpaikat:
+        <input type="text" name="Avoimetpaikat" value={formData.Avoimetpaikat} onChange={handleChange}
+        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        />
       </label>
- 
-      <label>
+    </div>
+    
+    <div className="form-group mb-4"> 
+
+      <label className="block text-gray-700 font-bold mb-2">
         Kuvaus:
-        <textarea name="kuvaus" value={formData.kuvaus} onChange={handleChange} required />
+        <textarea
+          name="kuvaus"
+          value={formData.kuvaus}
+          onChange={handleChange}
+          required
+          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        />
       </label>
- 
-      <label>
+    </div>
+    
+    <div className="form-group mb-4"> 
+
+      <label className="block text-gray-700 font-bold mb-2">
         Arvoja:
-        <input type="text" name="arvoja" value={formData.arvoja} onChange={handleChange} required />
+        <input type="text" name="arvoja" value={formData.arvoja} onChange={handleChange} required
+        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        />
       </label>
+    </div>
  
  
-      <label>
-        Arvostelut:
-        {formData.työntekijä.map((kommentti, index) => (
-          <input
-            key={index}
-            type="text"
-            value={kommentti}
-            onChange={(e) => handleArrayChange(e, index, 'työntekijä')}
-          />
-        ))}
-      </label>
- 
-      <label>
-        Kuva:
+    <div className="form-group mb-6">
+      <label className="block text-gray-700 font-bold mb-2">
+        Lisää kuvia:
         <input type="file" name="kuva" onChange={(e) => setFormData({ ...formData, kuva: e.target.files[0] })} />
       </label>
  
-      <button type="submit">Sign Up</button>
+      <button type="submit" className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Sign Up</button>
+    </div>
     </form>
   );
 };

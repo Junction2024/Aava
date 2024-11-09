@@ -1,6 +1,9 @@
 'use client'
 
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { ref, set } from 'firebase/database';
+import { database } from '../components/FirebaseConfig';
 
 const SignUpForm = () => {
   const [formData, setFormData] = useState({
@@ -8,6 +11,7 @@ const SignUpForm = () => {
     sukuNimi: '',
     syntymäaika: '',
     sahkoposti: '',
+    salasana: '',
     tyokokemusLista: [''],
     taidotLista: [''],
     kuva: '',
@@ -22,6 +26,8 @@ const SignUpForm = () => {
     setFormData({ ...formData, [name]: value });
   };
 
+  const router = useRouter(); // Initialize the router
+
   const handleArrayChange = (e, index, fieldName) => {
     const newValue = e.target.value;
     setFormData((prevState) => {
@@ -31,10 +37,18 @@ const SignUpForm = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const workerRef = ref(database, `Workers/${formData.etuNimi}_${formData.sukuNimi}`);
+    
+    // Save data in Firebase Realtime Database with specific name as key
+    await set(workerRef, formData);
+
     console.log('Form data submitted:', formData);
-    // Here, you can also send the data to an API endpoint or a backend server.
+
+    // Redirect to main page after submission
+    router.push('/main');
   };
 
   return (
@@ -66,8 +80,8 @@ const SignUpForm = () => {
       <div className="form-group mb-4">
         <label className="block text-gray-700 font-bold mb-2">Syntymäaika:</label>
         <input
-          type="numeric"
-          name="ika"
+          type="text"
+          name="syntymäaika"
           value={formData.syntymäaika}
           onChange={handleChange}
           required
@@ -81,6 +95,18 @@ const SignUpForm = () => {
           type="email"
           name="sahkoposti"
           value={formData.sahkoposti}
+          onChange={handleChange}
+          required
+          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        />
+      </div>
+
+      <div className="form-group mb-4">
+        <label className="block text-gray-700 font-bold mb-2">Salasana:</label>
+        <input
+          type="password"
+          name="salasana"
+          value={formData.salasana}
           onChange={handleChange}
           required
           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
