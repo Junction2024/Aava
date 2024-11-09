@@ -1,7 +1,7 @@
-// src/app/swipe/page.tsx
 "use client";
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Navbar from '../components/Navbar';
 
 const swipeData = {
   companies: [
@@ -16,106 +16,88 @@ const swipeData = {
       id: 2,
       name: 'MindfulTech',
       description: 'A tech company fostering a culture of mindfulness and work-life balance.',
-      wellBeingScore: 86,
+      wellBeingScore: 90,
       logo: '/path-to-logo.jpg',
     },
     {
       id: 3,
       name: 'HealthyFuture Corp',
       description: 'Leading the way in sustainable business practices and employee well-being.',
-      wellBeingScore: 86,
+      wellBeingScore: 88,
       logo: '/path-to-logo.jpg',
-    },
-  ],
-  jobSeekers: [
-    {
-      id: 1,
-      name: 'Anna Virtanen',
-      description: 'Experienced software developer with a passion for building products that prioritize well-being.',
-      profilePicture: '/path-to-profile-picture.jpg',
-    },
-    {
-      id: 2,
-      name: 'Mikko Lahtinen',
-      description: 'Marketing expert with a focus on creating brand strategies that emphasize mental health and balance.',
-      profilePicture: '/path-to-profile-picture.jpg',
-    },
-    {
-      id: 3,
-      name: 'Laura Korhonen',
-      description: 'Data analyst with a background in research and a commitment to improving workplace environments.',
-      profilePicture: '/path-to-profile-picture.jpg',
     },
   ],
 };
 
 const SwipePage = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [swipedItems, setSwipedItems] = useState<number[]>([]);
+  const [likedCompanies, setLikedCompanies] = useState([]);  // New state for liked companies
   
-  const dataToSwipe = swipeData.companies; // Change to jobSeekers to swipe job seekers
+  const dataToSwipe = swipeData.companies;
 
   const handleSwipe = (action: 'like' | 'dislike') => {
     const currentItem = dataToSwipe[currentIndex];
-    setSwipedItems([...swipedItems, currentItem.id]);
 
-    // Move to the next item
+    if (action === 'like') {
+      setLikedCompanies([...likedCompanies, currentItem]);  // Save liked company
+    }
+
     if (currentIndex < dataToSwipe.length - 1) {
       setCurrentIndex(currentIndex + 1);
     } else {
-      setCurrentIndex(0); // Reset to the beginning (loop)
+      setCurrentIndex(0);
     }
   };
 
   return (
-    <div className="swipe-page">
-      <nav className="bg-blue-600 p-4">
+    <div className="swipe-page min-h-screen bg-gray-100">
+      <nav className="bg-gradient-to-r from-blue-600 to-blue-500 p-4 shadow-lg">
         <div className="container mx-auto flex justify-between items-center">
-          <Link href="/main" className="text-white text-2xl font-bold">
+          <Link href="/main" className="text-white text-3xl font-bold">
             ThriveConnect
           </Link>
+          <ul className="flex space-x-6">
+            <li><Link href="/swipe" className="text-white text-lg hover:text-blue-200">Swipe</Link></li>
+            <li><Link href="/search" className="text-white text-lg hover:text-blue-200">Search</Link></li>
+            <li><Link href="/matches" className="text-white text-lg hover:text-blue-200">Matches</Link></li>
+            <li><Link href="/other" className="text-white text-lg hover:text-blue-200">Other</Link></li>
+          </ul>
         </div>
       </nav>
-      
-      {/* Swipe section */}
-      <div className="flex justify-center items-center mt-12">
-        <div className="swipe-card bg-white p-6 rounded-lg shadow-md max-w-xs text-center">
+
+      <div className="flex justify-center items-center mt-16">
+        <div className="swipe-card bg-white p-8 rounded-lg shadow-xl max-w-md text-center">
           <img
-            src={dataToSwipe[currentIndex].logo || dataToSwipe[currentIndex].profilePicture}
-            alt="logo"
-            className="w-24 h-24 rounded-full mx-auto mb-4"
+            src={dataToSwipe[currentIndex].logo}
+            alt="Company logo"
+            className="w-32 h-32 rounded-full mx-auto mb-6 border-4 border-gray-200 object-cover"
           />
-          <h2 className="text-xl font-semibold mb-2">{dataToSwipe[currentIndex].name}</h2>
+          <h2 className="text-2xl font-semibold mb-2 text-gray-800">{dataToSwipe[currentIndex].name}</h2>
           <p className="text-gray-600 mb-4">{dataToSwipe[currentIndex].description}</p>
-          <div className="flex justify-between">
+          {dataToSwipe[currentIndex].wellBeingScore && (
+            <p className="text-blue-600 font-bold mb-4">Well-being Score: {dataToSwipe[currentIndex].wellBeingScore}</p>
+          )}
+          <div className="flex justify-around mt-6">
             <button
               onClick={() => handleSwipe('dislike')}
-              className="px-6 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600"
+              className="w-16 h-16 rounded-full bg-red-500 text-white flex items-center justify-center text-xl shadow-md hover:bg-red-600"
             >
-              Dislike
+              ✕
             </button>
             <button
               onClick={() => handleSwipe('like')}
-              className="px-6 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600"
+              className="w-16 h-16 rounded-full bg-green-500 text-white flex items-center justify-center text-xl shadow-md hover:bg-green-600"
             >
-              Like
+              ❤
             </button>
-          </div>
+          </div> 
         </div>
-      </div>
-
-      {/* Display swiped items */}
-      <div className="text-center mt-8">
-        <h3 className="text-lg font-bold">Swiped Items:</h3>
-        <ul>
-          {swipedItems.map((itemId) => (
-            <li key={itemId}>Item {itemId}</li>
-          ))}
-        </ul>
       </div>
     </div>
   );
 };
 
 export default SwipePage;
+
+
 
