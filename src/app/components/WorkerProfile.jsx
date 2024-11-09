@@ -8,7 +8,6 @@ const WorkerProfile = ({
   sahkoposti,
   tyokokemusLista,
   taidotLista,
-  kuva,
   kuvaus,
   arvoja,
   suosittelija,
@@ -17,7 +16,6 @@ const WorkerProfile = ({
   return (
     <div className="worker-profile">
       <div className="profile-header">
-        <img src={kuva} alt={`${etuNimi} ${sukuNimi}`} className="profile-picture" />
         <h2>{`${etuNimi} ${sukuNimi}`}</h2>
         <p>{`Ikä: ${ika}`}</p>
         <p>{`Nykyinen Työpaikka: ${nykyinenTyopaikka}`}</p>
@@ -65,7 +63,6 @@ WorkerProfile.propTypes = {
   sahkoposti: PropTypes.string.isRequired,
   tyokokemusLista: PropTypes.arrayOf(PropTypes.string).isRequired,
   taidotLista: PropTypes.arrayOf(PropTypes.string).isRequired,
-  kuva: PropTypes.string.isRequired,
   kuvaus: PropTypes.string.isRequired,
   arvoja: PropTypes.string.isRequired,
   suosittelija: PropTypes.arrayOf(PropTypes.string).isRequired,

@@ -35,24 +35,19 @@ const HomePage = () => {
         <h1 className="text-4xl font-bold text-black mb-4">
           ThriveConnect: Redefine Work Well-being
         </h1>
-
         <p className="text-lg text-gray-600">
-         {/* Discover workplaces that don't just offer a job—they help you thrive. 
-          Connect with companies that prioritize well-being, mental health, and a shared sense of purpose. */}
           Imagine a workplace where well-being is at the heart of everything. At ThriveConnect, we match
           talent with companies that foster a culture of care, balance, and growth. We believe that your
           work shouldn't drain you—it should help you recharge.
         </p>
       </header>
 
-     {/* <section className="mt-8 text-center">
-        <h2 className="text-2xl font-semibold mb-2">Our Mission</h2>
-        <p className="text-gray-700 max-w-2xl mx-auto">
-          Imagine a workplace where well-being is at the heart of everything. At ThriveConnect, we match
-          talent with companies that foster a culture of care, balance, and growth. We believe that your
-          work shouldn’t drain you—it should help you recharge.
+      <section className="mt-8 text-center">
+        <h2 className="text-2xl font-semibold mb-2 text-black">Our Mission</h2>
+        <p className="text-gray-600 max-w-2xl mx-auto">
+          Imagine a workplace where well-being is at the heart of everything. At ThriveConnect, we match talent with companies that foster a culture of care, balance, and growth. We believe that your work shouldn't drain you—it should help you recharge.
         </p>
-          </section> */}
+      </section>
 
       <section className="mt-12 grid md:grid-cols-2 gap-8">
         <div className="flex flex-col items-center">
@@ -76,7 +71,7 @@ const HomePage = () => {
               Showcase your commitment to well-being and attract talent that shares your values. Help your team members find their purpose and flourish.
             </p>
             <Link href="/CompanySignup" className="mt-4 inline-block px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700">
-              Sign up
+              Sign Up
             </Link>
           </div>
         </div>

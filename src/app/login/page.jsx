@@ -31,7 +31,7 @@ const LoginPage = () => {
         const data = await res.json();
         setError(data.message || 'Login failed');
       }
-    } catch (err) {
+    } catch {
       setError('An unexpected error occurred');
     }
   };

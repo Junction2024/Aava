@@ -1,7 +1,6 @@
 'use client'
 
 import React, { useState } from 'react';
-import { useRouter } from 'next/navigation';
 import { ref, set } from 'firebase/database';
 import { database } from '../components/FirebaseConfig';
 
@@ -16,7 +15,7 @@ const SignUpForm = () => {
     taidotLista: [''],
     kuva: '',
     kuvaus: '',
-    arvoja: '',
+    arvoja: [],
     suosittelija: [''],
     nykyinenTyopaikka: '',
   });
@@ -25,8 +24,6 @@ const SignUpForm = () => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
-
-  const router = useRouter(); // Initialize the router
 
   const handleArrayChange = (e, index, fieldName) => {
     const newValue = e.target.value;
@@ -49,6 +46,20 @@ const SignUpForm = () => {
 
     // Redirect to main page after submission
     router.push('/main');
+  };
+
+
+  const handleAddValue = (value) => {
+    if (formData.arvoja.length < 5 && !formData.arvoja.includes(value)) {
+      setFormData({ ...formData, arvoja: [...formData.arvoja, value] });
+    }
+  };
+
+  const handleRemoveValue = (value) => {
+    setFormData({
+      ...formData,
+      arvoja: formData.arvoja.filter((val) => val !== value),
+    });
   };
 
   return (
@@ -84,7 +95,7 @@ const SignUpForm = () => {
           name="syntymäaika"
           value={formData.syntymäaika}
           onChange={handleChange}
-          required
+
           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         />
       </div>
@@ -136,16 +147,43 @@ const SignUpForm = () => {
       </div>
 
       <div className="form-group mb-4">
-        <label className="block text-gray-700 font-bold mb-2">Arvoja:</label>
-        <input
-          type="text"
-          name="arvoja"
-          value={formData.arvoja}
-          onChange={handleChange}
-          required
-          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-        />
-      </div>
+        <label className="block text-gray-700 font-bold mb-2">Valitse max. 5 arvoa:</label>
+        <div className="relative">
+          <select
+            onChange={(e) => handleAddValue(e.target.value)}
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          >
+            <option value="Tasa-arvo">Tasa-arvo</option>
+            <option value="Ympäristöystävällisyys/kestävä kehitys">Ympäristöystävällisyys/kestävä kehitys</option>
+            <option value="Korkea palkka">Korkea palkka</option>
+            <option value="Mukava työympäristö">Mukava työympäristö</option>
+            <option value="Fyysinen työ">Fyysinen työ</option>
+            <option value="Toimistotyö">Toimistotyö</option>
+            <option value="Hyvät liikunta/vapaa-ajan edut">Hyvät liikunta/vapaa-ajan edut</option>
+          </select>
+        </div>
+        <div className="mt-2">
+          {formData.arvoja.length > 0 && (
+            <div className="flex flex-wrap gap-2">
+              {formData.arvoja.map((value, index) => (
+                <span
+                  key={index}
+                  className="bg-blue-200 text-blue-800 px-4 py-2 rounded-full flex items-center gap-2"
+                >
+                  {value}
+                  <button
+                    type="button"
+                    onClick={() => handleRemoveValue(value)}
+                    className="text-red-500"
+                  >
+                    &#10005;
+                  </button>
+                </span>
+              ))}
+            </div>
+          )}
+          </div>
+          </div>
 
       <div className="form-group mb-4">
         <label className="block text-gray-700 font-bold mb-2">Työkokemus:</label>
