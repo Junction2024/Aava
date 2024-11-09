@@ -6,6 +6,8 @@ const CompanySignUpForm = () => {
     Yrityksenimi: '',
     Avoimetpaikat: [''],
     kuvaus: '',
+    sahkoposti: '',
+    salasana: '',
     kuva: '',
     arvostelut:[''],
     arvoja: '',
@@ -17,14 +19,14 @@ const CompanySignUpForm = () => {
     setFormData({ ...formData, [name]: value });
   };
  
-  const handleArrayChange = (e, index, fieldName) => {
-    const newValue = e.target.value;
-    setFormData((prevState) => {
-      const updatedArray = [...prevState[fieldName]];
-      updatedArray[index] = newValue;
-      return { ...prevState, [fieldName]: updatedArray };
-    });
-  };
+  // const handleArrayChange = (e, index, fieldName) => {
+  //   const newValue = e.target.value;
+  //   setFormData((prevState) => {
+  //     const updatedArray = [...prevState[fieldName]];
+  //     updatedArray[index] = newValue;
+  //     return { ...prevState, [fieldName]: updatedArray };
+  //   });
+  // };
  
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -44,8 +46,32 @@ const CompanySignUpForm = () => {
     </div>
 
     <div className="form-group mb-4">
+        <label className="block text-gray-700 font-bold mb-2">Sähköposti:</label>
+        <input
+          type="email"
+          name="sahkoposti"
+          value={formData.sahkoposti}
+          onChange={handleChange}
+          required
+          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        />
+      </div>
+
+      <div className="form-group mb-4">
+        <label className="block text-gray-700 font-bold mb-2">Salasana:</label>
+        <input
+          type="password"
+          name="salasana"
+          value={formData.salasana}
+          onChange={handleChange}
+          required
+          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        />
+      </div>
+
+    <div className="form-group mb-4">
       <label className="block text-gray-700 font-bold mb-2">
-        Avoimet työpaikkat:
+        Avoimet työpaikat:
         <input type="text" name="Avoimetpaikat" value={formData.Avoimetpaikat} onChange={handleChange}
         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         />

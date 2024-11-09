@@ -1,8 +1,9 @@
-// src/app/login/page.tsx
 "use client";
 
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
+import aavaLogo from '/public/aavalogo.png';
 
 const LoginPage = () => {
   const router = useRouter();
@@ -30,19 +31,20 @@ const LoginPage = () => {
         const data = await res.json();
         setError(data.message || 'Login failed');
       }
-    } catch (err) {
+    } catch {
       setError('An unexpected error occurred');
     }
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-black-100">
-      <div className="w-full max-w-md p-8 space-y-6 bg-black rounded-lg shadow-lg">
-        <h2 className="text-center text-2xl font-bold">Login</h2>
+    <div className="min-h-screen flex flex-col items-center justify-center bg-black-100">
+      <Image src={aavaLogo} alt="Aava Logo" width={150} height={150} className="mb-6" />
+      <div className="w-full max-w-md p-8 space-y-6 bg-blue-200 rounded-lg shadow-lg">
+        
         <form onSubmit={handleLogin} className="space-y-4">
           {error && <p className="text-red-500 text-sm">{error}</p>}
           <div>
-            <label className="block text-black-700">Email</label>
+            <label className="block text-black font-bold">Email</label>
             <input
               type="email"
               value={email}
@@ -52,7 +54,7 @@ const LoginPage = () => {
             />
           </div>
           <div>
-            <label className="block text-white-700">Password</label>
+            <label className="block text-black font-bold">Password</label>
             <input
               type="password"
               value={password}
@@ -74,5 +76,3 @@ const LoginPage = () => {
 };
 
 export default LoginPage;
-
-

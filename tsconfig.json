@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
     "target": "ES2017",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -19,9 +23,25 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"]
-    }
+      "@/*": [
+        "./src/*"
+      ]
+    },
+    "baseUrl": "./"
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/components/CompanyProfile.jsx", "src/app/components/JobListing.jsx", "src/app/components/WellBeingScore.jx", "src/app/login/page.jsx", "src/app/components/ReviewForm.jsx", "src/app/matches/page.jsx"],
-  "exclude": ["node_modules"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "src/app/components/CompanyProfile.jsx",
+    "src/app/components/JobListing.jsx",
+    "src/app/components/WellBeingScore.jx",
+    "src/app/login/page.jsx",
+    "src/app/components/ReviewForm.jsx",
+    "src/app/matches/page.tsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

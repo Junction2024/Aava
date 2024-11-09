@@ -1,12 +1,22 @@
-"use client";
-import React from 'react';
+"use client"
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 
-const MatchesPage = ({ likedCompanies = [] }) => {
+const MatchesPage = () => {
+  const [likedCompanies, setLikedCompanies] = useState([]);
+
+  useEffect(() => {
+    // Fetch or set your liked companies here
+    setLikedCompanies([
+      // Example data
+      { id: '1', name: 'Company A', description: 'Description A' },
+      { id: '2', name: 'Company B', description: 'Description B' },
+    ]);
+  }, []);
+
   const handleApply = (companyId) => {
     console.log(`Application sent to company ID: ${companyId}`);
   };
-
   return (
     <div className="matches-page bg-black-100 min-h-screen">
       <nav className="bg-gradient-to-r from-blue-600 to-blue-500 p-4 shadow-lg fixed w-full top-0 z-10">
@@ -39,7 +49,6 @@ const MatchesPage = ({ likedCompanies = [] }) => {
                   Apply
                 </button>
               </div>
-              
             ))
           ) : (
             <p className="text-center text-gray-400">No matches yet. Start swiping to find companies!</p>
@@ -51,6 +60,7 @@ const MatchesPage = ({ likedCompanies = [] }) => {
 };
 
 export default MatchesPage;
+
 
 
 

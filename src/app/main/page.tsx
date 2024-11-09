@@ -32,6 +32,11 @@ const MainPage = () => {
                 Other
               </Link>
             </li>
+            <li>
+              <Link href="/profile" className="text-white text-lg hover:text-blue-200">
+                Profile
+              </Link>
+            </li>
           </ul>
         </div>
       </nav>
