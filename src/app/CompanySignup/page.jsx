@@ -9,7 +9,7 @@ const CompanySignUpForm = () => {
     kuva: '',
     arvostelut:[''],
     arvoja: '',
-    työntekijä:[''],
+    
   });
  
   const handleChange = (e) => {
