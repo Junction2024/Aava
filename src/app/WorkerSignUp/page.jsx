@@ -2,6 +2,9 @@
 
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { ref, set } from 'firebase/database';
+import { database } from '../components/FirebaseConfig';
+
 
 const SignUpForm = () => {
   const [formData, setFormData] = useState({
@@ -34,13 +37,19 @@ const SignUpForm = () => {
     });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Form data submitted:', formData);
-    // You can send the data to an API endpoint or backend server here
 
-    // Redirect to the main page after successful form submission
-    router.push('/main'); // This redirects to the homepage
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const workerRef = ref(database, `Workers/${formData.etuNimi}_${formData.sukuNimi}`);
+    
+    // Save data in Firebase Realtime Database with specific name as key
+    await set(workerRef, formData);
+
+    console.log('Form data submitted:', formData);
+
+    // Redirect to main page after submission
+    router.push('/main');
   };
 
   return (
