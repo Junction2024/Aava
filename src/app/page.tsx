@@ -4,6 +4,7 @@ import { useAuth } from "../context/AuthContext";
 import Link from "next/link";
 import React from "react";
 
+
 const HomePage = () => {
   const { isLoggedIn } = useAuth();
 
