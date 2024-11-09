@@ -6,16 +6,14 @@ export default function CompanyProfile (){
         Yrityksenimi,
         Avoimetpaikat,
         arvostelut,
-        kuva,
         kuvaus,
         arvoja,
       }) => {
         return (
           <div className="worker-profile">
             <div className="profile-header">
-              <img src={kuva} alt={{Yrityksenimi}} className="profile-picture" />
               <h2>{{Yrityksenimi}}</h2>
-              <p>"Avoimet työpaikat:" {{Avoimetpaikat}}</p>
+              <p>Avoimet työpaikat: {{Avoimetpaikat}}</p>
             </div>
        
             <div className="profile-details">
@@ -42,7 +40,6 @@ export default function CompanyProfile (){
         Avoimetpaikat:PropTypes.arrayOf(PropTypes.string).isRequired,
         kuvaus:PropTypes.string.isRequired,
         arvostelut:PropTypes.arrayOf(PropTypes.string).isRequired,
-        kuva:PropTypes.string.isRequired,
         kuvaus:PropTypes.string.isRequired,
         arvoja:PropTypes.string.isRequired,
 

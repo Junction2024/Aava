@@ -31,7 +31,7 @@ const HomePage = () => {
           ThriveConnect: Redefine Work Well-being
         </h1>
         <p className="text-lg text-gray-600">
-          Discover workplaces that don't just offer a job—they help you thrive. 
+          Discover workplaces that dont just offer a job—they help you thrive. 
           Connect with companies that prioritize well-being, mental health, and a shared sense of purpose.
           </p>
       </header>
@@ -39,7 +39,7 @@ const HomePage = () => {
       <section className="mt-8 text-center">
         <h2 className="text-2xl font-semibold mb-2 text-black">Our Mission</h2>
         <p className="text-gray-600 max-w-2xl mx-auto">
-          Imagine a workplace where well-being is at the heart of everything. At ThriveConnect, we match talent with companies that foster a culture of care, balance, and growth. We believe that your work shouldn’t drain you—it should help you recharge.
+          Imagine a workplace where well-being is at the heart of everything. At ThriveConnect, we match talent with companies that foster a culture of care, balance, and growth. We believe that your work shouldnt drain you—it should help you recharge.
           </p>
     
       </section>

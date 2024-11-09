@@ -17,14 +17,14 @@ const CompanySignUpForm = () => {
     setFormData({ ...formData, [name]: value });
   };
  
-  const handleArrayChange = (e, index, fieldName) => {
-    const newValue = e.target.value;
-    setFormData((prevState) => {
-      const updatedArray = [...prevState[fieldName]];
-      updatedArray[index] = newValue;
-      return { ...prevState, [fieldName]: updatedArray };
-    });
-  };
+  // const handleArrayChange = (e, index, fieldName) => {
+  //   const newValue = e.target.value;
+  //   setFormData((prevState) => {
+  //     const updatedArray = [...prevState[fieldName]];
+  //     updatedArray[index] = newValue;
+  //     return { ...prevState, [fieldName]: updatedArray };
+  //   });
+  // };
  
   const handleSubmit = (e) => {
     e.preventDefault();

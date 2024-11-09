@@ -1,7 +1,6 @@
 'use client'
 
 import React, { useState } from 'react';
-import { useRouter } from 'next/navigation';
 import { ref, set } from 'firebase/database';
 import { database } from '../components/FirebaseConfig';
 
