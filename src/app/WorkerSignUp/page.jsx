@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { ref, set } from 'firebase/database';
 import { database } from '../components/FirebaseConfig';
+import { useRouter } from 'next/navigation';
 
 const SignUpForm = () => {
   const [formData, setFormData] = useState({
@@ -19,6 +20,8 @@ const SignUpForm = () => {
     suosittelija: [''],
     nykyinenTyopaikka: '',
   });
+
+  const router = useRouter();
 
   const handleChange = (e) => {
     const { name, value } = e.target;

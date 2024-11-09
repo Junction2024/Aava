@@ -39,7 +39,7 @@
     "src/app/components/WellBeingScore.jx",
     "src/app/login/page.jsx",
     "src/app/components/ReviewForm.jsx",
-    "src/app/matches/page.jsx"
+    "src/app/matches/page.tsx"
   ],
   "exclude": [
     "node_modules"
