@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 const SignUpForm = () => {
   const [formData, setFormData] = useState({
@@ -22,6 +23,8 @@ const SignUpForm = () => {
     setFormData({ ...formData, [name]: value });
   };
 
+  const router = useRouter(); // Initialize the router
+
   const handleArrayChange = (e, index, fieldName) => {
     const newValue = e.target.value;
     setFormData((prevState) => {
@@ -34,7 +37,10 @@ const SignUpForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Form data submitted:', formData);
-    // Here, you can also send the data to an API endpoint or a backend server.
+    // You can send the data to an API endpoint or backend server here
+
+    // Redirect to the main page after successful form submission
+    router.push('/main'); // This redirects to the homepage
   };
 
   return (
@@ -70,7 +76,7 @@ const SignUpForm = () => {
           name="ika"
           value={formData.syntymäaika}
           onChange={handleChange}
-          required
+          // required
           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         />
       </div>
