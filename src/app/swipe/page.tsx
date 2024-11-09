@@ -3,6 +3,9 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import Navbar from '../components/Navbar';
 
+import { database } from '../components/FirebaseConfig';
+import { ref, push } from 'firebase/database';
+
 const swipeData = {
   companies: [
     {
@@ -39,7 +42,12 @@ const SwipePage = () => {
     const currentItem = dataToSwipe[currentIndex];
 
     if (action === 'like') {
-      setLikedCompanies([...likedCompanies, currentItem]);  // Save liked company
+        // Update the local state
+        setLikedCompanies([...likedCompanies, currentItem]);
+
+        // Save the liked company to Firebase Realtime Database
+        const itemsRef = ref(database, 'Liked Companies'); // Reference to "items" node
+        push(itemsRef, currentItem); // Push the liked company to the database
     }
 
     if (currentIndex < dataToSwipe.length - 1) {
